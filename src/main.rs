@@ -16,7 +16,7 @@ fn main() {
     //a = 100;                                  // this is not allowed and would give an error at compile time
 
     let mut f = 5;                              // make variable mutable
-    f = 6; 			                            // now I can assign a new value (of the same type!) to this variable
+    f = 6;                                      // now I can assign a new value (of the same type!) to this variable
     let f = "Look, I am text now";              // shadowing, and changing type!
 
     // scopes and binding
@@ -27,7 +27,7 @@ fn main() {
         let g = 'G';                            // shadowing within the block only
         println!("The value of g is: {}", g);   // prints "The value of g is: G"
 
-    	let h = 8;                              // h is not accessible outside of the scope of this block
+        let h = 8;                              // h is not accessible outside of the scope of this block
         println!("I can access both g [{}] and h [{}]!", g, h);
     }
     println!("The value of g is: {}", g);       // prints "The value of g is: 7"
