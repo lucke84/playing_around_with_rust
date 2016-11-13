@@ -31,4 +31,37 @@ fn main() {
         println!("I can access both g [{}] and h [{}]!", g, h);
     }
     println!("The value of g is: {}", g);       // prints "The value of g is: 7"
+
+    //let j = (let i = 5);                      // this is not allowed, in Rust assignment cannot be expressions
+    let mut i = 5;
+    let j = (i = 6);                            // the value of an assignment is an empty tuple: so i has the value (), not 6
+
+    let k = sum(i, 3);
+    println!("The value of k is: {}", k);
+
+    let l = always_return_one(999999);
+    println!("The value of l is: {}", l);
+
+    //let m: String = diverges();                // a diverges type can be assigned to any type, in this example a String
+                                                 // its output would kill the program, something like:
+                                                 // thread 'main' panicked at 'This function never returns!', src/main.rs:62
+                                                 // note: Run with `RUST_BACKTRACE=1` for a backtrace.
 }
+
+// -----------------
+// *** functions ***
+// -----------------
+
+fn sum(x: i32, y: i32) -> i32 {                 // types are mandatory in the function's signature (both args and return value)
+    x + y                                       // no semicolon, it's a return value; with a semicolon, it would return ()
+}
+
+fn always_return_one(x: i32) -> i32 {
+    return 1;                                   // explicit return keyword, semicolon required
+    x                                           // never executed
+}
+
+fn diverges() -> ! {                            // defines the return type as "diverges" using the bang symbol
+    panic!("This function never returns!");     // panic! is a macro
+}
+
