@@ -50,6 +50,48 @@ fn main() {
     let n: fn(i32, i32) -> i32 = sum;                 // this is a function pointer (without inference)
     // let n = sum;                                   // this would work too (using inference)
     println!("The value of n(k, l) is: {}", n(k, l)); // prints "The value of n(k, l) is: 10"
+
+    // -----------------
+    // *** types ***
+    // -----------------
+
+    // -- Booleans
+    let a_boolean = true;                         // with inference
+    let another_boolean: bool = false;            // without inference
+
+    // -- Chars
+    let this_is_a_char = 'x';                    // delimited by a single quote/tick
+    let two_hearts_char = '💕';                   // any unicode char (all chars are 4 bytes, not just 1)
+
+    // -- Numeric types
+    let an_integer = 42;                         // default with inference (type i32 - The 32-bit signed integer type)
+    let a_float = 1.0;                           // default with inference (type f64 - The 64-bit floating point type)
+
+    // Numeric types are a combo of sign (signed/unsigned), size (fixed/variable), and integerness (integer/floating)
+    // i8     - signed,    8-bit, integer
+    // i16    - signed,   16-bit, integer
+    // i32    - signed,   32-bit, integer
+    // i64    - signed,   64-bit, integer
+    // u8     - unsigned,  8-bit, integer
+    // u16    - unsigned, 16-bit, integer
+    // u32    - unsigned, 32-bit, integer
+    // u64    - unsigned, 64-bit, integer
+    // isize  - signed,   variable size, integer
+    // usize  - unsigned, variable size, integer
+    // f32    - signed,   32-bit, floating
+    // f64    - signed,   64-bit, floating
+
+    // -- Arrays
+    // arrays have type [T, N]
+    let immutable_array = [5, 7];            // type [i32; 2]
+    let mut mutable_array = [1.5, 2.3, 3.0]; // type [f64; 3]
+ 
+    // arrays are 0-based
+    // you access a given item with the "subscript notation"
+    println!("The second item is: {}", immutable_array[1]);         // prints "The second item is: 7"
+
+    let array_with_default_values = [0; 20];                        // type [i32; 20] - an array of 20 zeros
+    println!("Array size is: {}", array_with_default_values.len()); // gets the array's length
 }
 
 // -----------------
