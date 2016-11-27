@@ -34,7 +34,7 @@ fn main() {
 
     //let j = (let i = 5);                      // this is not allowed, in Rust assignment cannot be expressions
     let mut i = 5;
-    let j = (i = 6);                            // the value of an assignment is an empty tuple: so i has the value (), not 6
+    let j = (i = 6);                            // the value of an assignment is an empty tuple: so j has the value (), not 6
 
     let k = sum(i, 3);
     println!("The value of k is: {}", k);
@@ -46,6 +46,10 @@ fn main() {
                                                  // its output would kill the program, something like:
                                                  // thread 'main' panicked at 'This function never returns!', src/main.rs:62
                                                  // note: Run with `RUST_BACKTRACE=1` for a backtrace.
+
+    let n: fn(i32, i32) -> i32 = sum;                 // this is a function pointer (without inference)
+    // let n = sum;                                   // this would work too (using inference)
+    println!("The value of n(k, l) is: {}", n(k, l)); // prints "The value of n(k, l) is: 10"
 }
 
 // -----------------
