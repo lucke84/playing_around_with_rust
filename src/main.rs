@@ -83,7 +83,7 @@ fn main() {
 
     // -- Arrays
     // arrays have type [T, N]
-    let immutable_array = [5, 7];            // type [i32; 2]
+    let immutable_array = [5, 7, 4, 23, 11]; // type [i32; 5]
     let mut mutable_array = [1.5, 2.3, 3.0]; // type [f64; 3]
  
     // arrays are 0-based
@@ -92,6 +92,36 @@ fn main() {
 
     let array_with_default_values = [0; 20];                        // type [i32; 20] - an array of 20 zeros
     println!("Array size is: {}", array_with_default_values.len()); // gets the array's length
+
+    // -- Slices
+    // Slices are references to a portion of another data structure
+    // (a view into a block of memory represented as a pointer and a length)
+    let complete_slice = &mutable_array[..];                  // [5, 7, 3, 23, 11]
+    let partial_slice = &mutable_array[1..3];                 // [7, 4] - from item at index 1 to item at index 3 (excluded)
+    let from_item_till_end_slice = &mutable_array[1..];       // [7, 4, 23, 11]
+    let from_beginning_till_item_slice = &mutable_array[..2]; // [5, 7]
+
+    // -- Tuples
+    // tuples are ordered lists of fixed size
+    let tuple_one = (1, "one");
+    let tuple_two = (2, "two");
+
+    // You can assign one tuple into another, if they have the same contained types and arity. Tuples have the same arity when they have the same length.
+    let mut tuple_xy = (0, "zero");
+    tuple_xy = tuple_two;
+
+    let (x, y) = tuple_xy;  // destructuring let 
+    println!("x is {}", x); // prints "x is 2" 
+    println!("y is {}", y); // prints "y is two"
+
+    // worth mentioning
+    (0,); // single-element tuple
+    (0); // zero in parentheses
+
+    // access a tuple via indexing
+    let tuple_first_item = tuple_xy.0;
+    let tuple_second_item = tuple_xy.1;
+    println!("x is {}", tuple_first_item);
 }
 
 // -----------------
