@@ -61,25 +61,25 @@ fn main() {
 
     // -- Chars
     let this_is_a_char = 'x';                    // delimited by a single quote/tick
-    let two_hearts_char = '💕';                   // any unicode char (all chars are 4 bytes, not just 1)
+    let two_hearts_char = '💕';                   // any unicode char (due to the fact that they are UTF-32, all chars are 4 bytes instead of just 1)
 
     // -- Numeric types
     let an_integer = 42;                         // default with inference (type i32 - The 32-bit signed integer type)
     let a_float = 1.0;                           // default with inference (type f64 - The 64-bit floating point type)
 
     // Numeric types are a combo of sign (signed/unsigned), size (fixed/variable), and integerness (integer/floating)
-    // i8     - signed,    8-bit, integer
-    // i16    - signed,   16-bit, integer
-    // i32    - signed,   32-bit, integer
-    // i64    - signed,   64-bit, integer
-    // u8     - unsigned,  8-bit, integer
-    // u16    - unsigned, 16-bit, integer
-    // u32    - unsigned, 32-bit, integer
-    // u64    - unsigned, 64-bit, integer
-    // isize  - signed,   variable size, integer
+    // i8     -   signed,         8-bit, integer
+    // i16    -   signed,        16-bit, integer
+    // i32    -   signed,        32-bit, integer
+    // i64    -   signed,        64-bit, integer
+    // u8     - unsigned,         8-bit, integer
+    // u16    - unsigned,        16-bit, integer
+    // u32    - unsigned,        32-bit, integer
+    // u64    - unsigned,        64-bit, integer
+    // isize  -   signed, variable size, integer
     // usize  - unsigned, variable size, integer
-    // f32    - signed,   32-bit, floating
-    // f64    - signed,   64-bit, floating
+    // f32    -   signed,        32-bit, floating
+    // f64    -   signed,        64-bit, floating
 
     // -- Arrays
     // arrays have type [T, N]
@@ -118,7 +118,7 @@ fn main() {
     (0,); // single-element tuple
     (0); // zero in parentheses
 
-    // access a tuple via indexing
+    // access a tuple via indexing (0-based)
     let tuple_first_item = tuple_xy.0;
     let tuple_second_item = tuple_xy.1;
     println!("x is {}", tuple_first_item);
